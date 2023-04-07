@@ -10,7 +10,7 @@ import "dotenv/config";
     .then(() => {
       console.log("Database connected!");
       app.listen(3001, () => {
-        console.log("Servidor executando");
+        console.log("Servidor executando em http://localhost:3001");
       });
     });
 })();
