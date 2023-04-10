@@ -6,7 +6,6 @@ import { IUserRequest } from "../../interfaces/Users/user.Interface";
 export const createdUserService = async (dataBody:IUserRequest)=>{
     const userRepository = AppDataSource.getRepository(User)
 
-    console.log("AQUI=>>>>>>>",dataBody)
 
     const userExist = await userRepository.findOneBy({
         email:dataBody.email
