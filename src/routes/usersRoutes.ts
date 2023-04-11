@@ -14,7 +14,6 @@ userRouter.get("", getUserController)
 userRouter.patch("",verifyAutheticationOfToken ,updateUserController)
 
 //deletar usuario
-
 userRouter.delete("", verifyAutheticationOfToken, deleteUserController)
 
 
