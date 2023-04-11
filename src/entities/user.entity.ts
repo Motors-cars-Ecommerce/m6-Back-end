@@ -61,7 +61,7 @@ class User {
   cars: Car[];
 
   @OneToMany(() => Comment, (comment) => comment.user)
-  @JoinColumn()
+  //@JoinColumn()
   comments: Comment[];
 }
 
