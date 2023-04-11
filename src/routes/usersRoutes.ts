@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { createdUserController, getUserController, updateUserController } from "../controllers/User/usersControllers"
+import { createdUserController, deleteUserController, getUserController, updateUserController } from "../controllers/User/usersControllers"
 import { verifyAutheticationOfToken } from "../middlewares/ensureAuth.middleware"
 
 const userRouter = Router()
@@ -12,6 +12,9 @@ userRouter.get("", getUserController)
 
 //Update usuario
 userRouter.patch("",verifyAutheticationOfToken ,updateUserController)
+
+//deletar usuario
+userRouter.delete("", verifyAutheticationOfToken, deleteUserController)
 
 
 
