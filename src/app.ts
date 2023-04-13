@@ -5,8 +5,16 @@ import "reflect-metadata";
 import cors from "cors";
 import handleError from "./errors/handleError";
 import userRouter from "./routes/usersRoutes";
+
+import addressRoutes from "./routes/address.routes";
+
+
+import commentsRouter from "./routes/comments.routes";
+
 import loginRouter from "./routes/loginRoutes";
 import carsRouter from "./routes/cars.routes";
+
+
 
 
 const app = express();
@@ -14,9 +22,17 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+
+app.use("/address", addressRoutes);
+
 app.use("/user", userRouter)
+
+app.user("/comments", commentsRouter)
+
 app.use("/login", loginRouter);
 app.use("/cars", carsRouter)
+
 
 
 
