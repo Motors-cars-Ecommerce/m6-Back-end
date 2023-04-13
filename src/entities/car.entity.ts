@@ -38,7 +38,7 @@ class Car {
   images: Image[];
 
   @OneToMany(() => Comment, (comment) => comment.car)
-  @JoinColumn()
+  //@JoinColumn()
   comments: Comment[];
 }
 
