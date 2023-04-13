@@ -9,3 +9,12 @@ export interface IUserRequest{
     isActive: boolean;
 
 }
+export interface IUserUpdate{
+    name?: string;
+    email?: string;
+    cpf?: string;
+    password?: string;
+    phone?: string;
+    birthday?: Date;
+}
+
