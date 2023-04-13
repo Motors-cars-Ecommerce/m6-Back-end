@@ -7,7 +7,7 @@ import Comment from "./entities/comment.entity";
 import Image from "./entities/image.entity";
 import ModelsCar from "./entities/modelCar.entity";
 import User from "./entities/user.entity";
-import { initialCreateEntities1680724391536 } from "./migrations/1680724391536-initialCreateEntities";
+import { InitialMigration1681411654011 } from "./migrations/1681411654011-InitialMigration";
 
 const AppDataSource = new DataSource(
 
@@ -31,7 +31,7 @@ const AppDataSource = new DataSource(
       logging: true,
       synchronize: false,
       entities: [Address, Car, Comment, Image, ModelsCar, User],
-      migrations: [initialCreateEntities1680724391536],
+      migrations: [InitialMigration1681411654011],
   }
   
 

@@ -6,6 +6,7 @@ import cors from "cors";
 import handleError from "./errors/handleError";
 import userRouter from "./routes/usersRoutes";
 import loginRouter from "./routes/loginRoutes";
+import carsRouter from "./routes/cars.routes";
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use("/user", userRouter)
 app.use("/login", loginRouter);
+app.use("/cars", carsRouter)
 
 
 
