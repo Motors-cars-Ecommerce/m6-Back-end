@@ -28,7 +28,7 @@ app.use("/address", addressRoutes);
 
 app.use("/user", userRouter)
 
-app.user("/comments", commentsRouter)
+app.use("/comments", commentsRouter)
 
 app.use("/login", loginRouter);
 app.use("/cars", carsRouter)

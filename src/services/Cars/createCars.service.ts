@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import Car from "../../entities/car.entity";
 import { ICar, ICarReturn } from "../../interfaces/Cars/cars.interface";
 import { Repository } from "typeorm";
-import { carReturnSchema } from "../../schemas/car.schemas";
+import { carReturnSchema } from "../../schema/car.schemas";
 
 
 export const createdCarService = async (dataBody: ICar): Promise<ICarReturn>=> {
