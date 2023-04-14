@@ -14,6 +14,7 @@ import commentsRouter from "./routes/comments.routes";
 import loginRouter from "./routes/loginRoutes";
 import carsRouter from "./routes/cars.routes";
 import modelRouter from "./routes/modelsCarsRoutes";
+import imageRouter from "./routes/image.routes";
 
 
 
@@ -36,6 +37,8 @@ app.use("/login", loginRouter);
 app.use("/cars", carsRouter)
 
 app.use("/model", modelRouter)
+
+app.use("/image", imageRouter)
 
 
 
