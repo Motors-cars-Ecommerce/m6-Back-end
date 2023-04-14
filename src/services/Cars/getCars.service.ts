@@ -5,5 +5,6 @@ export const getCarsService = async () => {
   const carsRepo = AppDataSource.getRepository(Car);
 
   const cars = await carsRepo.find()
+
   return cars;
 };

@@ -54,6 +54,7 @@ class User {
   hashPassword() {
     this.password = hashSync(this.password, 10);
   }
+  
   @OneToMany(() => Address, (address) => address.user)
   addresses: Address[];
 
@@ -61,7 +62,7 @@ class User {
   cars: Car[];
 
   @OneToMany(() => Comment, (comment) => comment.user)
-  //@JoinColumn()
+  @JoinColumn()
   comments: Comment[];
 }
 

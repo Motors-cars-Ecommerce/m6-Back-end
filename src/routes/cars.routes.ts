@@ -1,14 +1,13 @@
 import { Router } from "express";
 import { ensureCarDoesntExists } from "../middleware/ensureCarDoesntExists.middleware";
 import { ensureAuthMiddleware } from "../middleware/ensureAuth.middleware";
-import { createdCarService } from "../services/Cars/createCars.service";
-import { deleteCarController, getCarByIdController, getCarsController, updateCarController } from "../controllers/Cars/carsControllers";
+import { createdCarsController, deleteCarController, getCarByIdController, getCarsController, updateCarController } from "../controllers/Cars/carsControllers";
 
 const carsRouter = Router();
 
 carsRouter.post(
   "",
-  createdCarService
+  createdCarsController
 );
 
 carsRouter.get("", getCarsController)
