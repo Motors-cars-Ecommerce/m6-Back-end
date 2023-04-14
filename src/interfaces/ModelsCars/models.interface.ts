@@ -14,6 +14,11 @@ export interface ICarModelResponse{
     year: string,
     fuel: string,
 }
+export interface ICarModelRequestGetModel{
+    model: string,
+}
+  
+   
 
 export interface ICarModelUpdate{
     branded?:string,
