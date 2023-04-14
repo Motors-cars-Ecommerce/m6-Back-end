@@ -1,10 +1,10 @@
 import { Request, Response} from "express"
 import { ICarModelRequest, ICarModelRequestGetModel, ICarModelUpdate } from "../../interfaces/ModelsCars/models.interface";
-import { createdModelsCarsService } from "../../services/modelsCars/createdModelCarsService";
-import { listCarsModelsService } from "../../services/modelsCars/listCarsModelsService";
-import { listCarByIdService } from "../../services/modelsCars/listCarByIdService";
-import { deleteCarByIdService } from "../../services/modelsCars/deleteCarByIdService";
-import { updateModelCarByIdService } from "../../services/modelsCars/updateModelsCarService";
+import { createdModelsCarsService } from "../../services/modelsCars/createdModelCars.service";
+import { listCarsModelsService } from "../../services/modelsCars/listCarsModels.service";
+import { listCarByIdService } from "../../services/modelsCars/listCarById.service";
+import { deleteCarByIdService } from "../../services/modelsCars/deleteCarById.service";
+import { updateModelCarByIdService } from "../../services/modelsCars/updateModelsCar.service";
 
 
 export const createdModelController = async (req:Request, res:Response)=>{

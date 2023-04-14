@@ -8,8 +8,6 @@ const carsRouter = Router();
 
 carsRouter.post(
   "",
-  ensureAuthMiddleware,
-  ensureCarDoesntExists,
   createdCarService
 );
 

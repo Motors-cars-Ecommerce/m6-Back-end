@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 
 
 export const modelCarSchema = z.object({
-  branded: z.string().nonempty(),
+  branded: z.string(),
   model: z.string(),
   year: z.number(),
   fuel: z.string(),
@@ -11,7 +11,7 @@ export const modelCarSchema = z.object({
 
 export const modelCarReturnSchema = z.object({
   id: z.string(),
-  branded: z.string().nonempty(),
+  branded: z.string(),
   model: z.string(),
   year: z.number(),
   fuel: z.string(),
