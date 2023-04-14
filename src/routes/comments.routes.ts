@@ -8,7 +8,7 @@ import ensureDataIsValidMiddleware from "../middleware/ensureDetailIsValid.middl
 const commentsRouter = Router()
 
 commentsRouter.post("", ensureAuthMiddleware, ensureDataIsValidMiddleware(commentSchema),createCommentControler)
-commentsRouter.get("/:id/comments", ensureUUIDIsValid,listAllCommentsController)
+commentsRouter.get("", listAllCommentsController)
 commentsRouter.patch("/:id", ensureAuthMiddleware,ensureUUIDIsValid, ensureDataIsValidMiddleware(commentUpdateSchema),updateCommentController)
 commentsRouter.get("/:id", ensureAuthMiddleware,ensureUUIDIsValid,retriveCommentsController)
 commentsRouter.delete("/:id", ensureAuthMiddleware,ensureUUIDIsValid,deleteCommentController)

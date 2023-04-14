@@ -56,7 +56,7 @@ class User {
   }
   
   @OneToMany(() => Address, (address) => address.user)
-  addresses: Address[];
+  address: Address[];
 
   @OneToMany(() => Car, (car) => car.user)
   cars: Car[];
