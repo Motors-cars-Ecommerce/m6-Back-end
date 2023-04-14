@@ -7,6 +7,7 @@ export const carSchema = z.object({
   color: z.string(),
   description: z.string(),
   model_car: z.any(),
+  user: z.any()
 });
 
 export const carReturnSchema = carSchema.extend({
@@ -15,7 +16,8 @@ export const carReturnSchema = carSchema.extend({
   price: z.number(),
   color: z.string(),
   description: z.string(),
-  model_car: modelCarReturnSchema.nullable(),
+  model_car: modelCarReturnSchema,
+  user: z.any()
 });
 
 export const carUpdateSchema = z.object({

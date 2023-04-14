@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
-import { ICarRequest } from "../../interfaces/Cars/cars.interface";
-import { createdCarService } from "../../services/Cars/createCars.service";
+import { ICar, ICarRequest } from "../../interfaces/Cars/cars.interface";
+import  createdCarService  from "../../services/Cars/createCars.service";
 import { getCarsService } from "../../services/Cars/getCars.service";
 import getCarByIdService from "../../services/Cars/getCarById.service";
 import updateCarService from "../../services/Cars/updateCars.service";
 import { deleteCarService } from "../../services/Cars/deleteCars.service";
 
 export const createdCarsController = async (req: Request, res: Response) => {
-  const carDataBody: ICarRequest = req.body;
+  const carDataBody: ICar = req.body;
   const newCar = await createdCarService(carDataBody);
+  console.log(newCar)
   return res.status(201).json(newCar);
 };
 

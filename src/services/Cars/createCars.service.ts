@@ -1,16 +1,28 @@
 import AppDataSource from "../../data-source";
 import Car from "../../entities/car.entity";
-import { ICar, ICarReturn } from "../../interfaces/Cars/cars.interface";
+import { ICar } from "../../interfaces/Cars/cars.interface";
 import { Repository } from "typeorm";
 import { carReturnSchema } from "../../schema/car.schemas";
 
-export const createdCarService = async (dataBody: any): Promise<ICarReturn> => {
-  const data: ICar = dataBody.body;
+const createdCarService = async (dataBody: ICar) => {
   const carRepository: Repository<Car> = AppDataSource.getRepository(Car);
-  const createCar: Car = carRepository.create(data);
+
+  const createCar: Car = carRepository.create(dataBody);
+
   await carRepository.save(createCar);
-  console.log(createCar)
-  const treco = carReturnSchema.parse(createCar);
+
+  const returnCar = await carRepository.findOne({
+    where:{
+      id: createCar.id
+    },
+    relations:{
+      model_car:true
+    }
+  })
+
+  const treco = carReturnSchema.parse(returnCar);
 
   return treco;
 };
+
+export default createdCarService
