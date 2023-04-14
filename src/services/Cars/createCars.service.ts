@@ -11,16 +11,7 @@ const createdCarService = async (dataBody: ICar) => {
 
   await carRepository.save(createCar);
 
-  const returnCar = await carRepository.findOne({
-    where:{
-      id: createCar.id
-    },
-    relations:{
-      model_car:true
-    }
-  })
-
-  const treco = carReturnSchema.parse(returnCar);
+  const treco = carReturnSchema.parse(createCar);
 
   return treco;
 };
