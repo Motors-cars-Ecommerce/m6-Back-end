@@ -13,6 +13,7 @@ import commentsRouter from "./routes/comments.routes";
 
 import loginRouter from "./routes/loginRoutes";
 import carsRouter from "./routes/cars.routes";
+import modelRouter from "./routes/modelsCarsRoutes";
 
 
 
@@ -31,7 +32,10 @@ app.use("/user", userRouter)
 app.use("/comments", commentsRouter)
 
 app.use("/login", loginRouter);
+
 app.use("/cars", carsRouter)
+
+app.use("/model", modelRouter)
 
 
 
