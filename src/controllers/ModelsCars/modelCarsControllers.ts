@@ -14,8 +14,7 @@ export const createdModelController = async (req:Request, res:Response)=>{
 }
 
 export const listCarsModelsController = async (req:Request, res:Response)=>{
-    const dataBody: ICarModelRequestGetModel= req.body;
-    const service = await listCarsModelsService(dataBody)
+    const service = await listCarsModelsService()
     return res.status(200).json(service)
 }
 

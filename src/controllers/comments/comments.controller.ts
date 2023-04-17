@@ -26,9 +26,7 @@ const updateCommentController = async (req:Request, res:Response) => {
 }
 
 const listAllCommentsController =async (req:Request, res:Response) => {
-    const carId:string = req.params.id
-
-    const allComments = await listAllCommentsService(carId)
+    const allComments = await listAllCommentsService()
 
     return res.status(200).json(allComments)
 }
