@@ -15,4 +15,11 @@ const responseAddressSchema = addressSchema.extend({
   id: z.string(),
 });
 
-export { addressSchema, responseAddressSchema, addressUpdatedSchema };
+const listAddressSchema = responseAddressSchema.array();
+
+export {
+  addressSchema,
+  responseAddressSchema,
+  addressUpdatedSchema,
+  listAddressSchema,
+};

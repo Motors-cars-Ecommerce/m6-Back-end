@@ -1,15 +1,18 @@
 import AppDataSource from "../../data-source";
 import User from "../../entities/user.entity";
 
-export const getUserService = async () => {
+export const retriveUserService = async (userId: string) => {
   const userRepository = AppDataSource.getRepository(User);
 
-  const users = await userRepository.find({
+  const user = await userRepository.findOne({
+    where: {
+      id: userId,
+    },
     relations: {
       addresses: true,
       cars: true,
     },
   });
 
-  return users;
+  return user;
 };
