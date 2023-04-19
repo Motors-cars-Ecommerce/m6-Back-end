@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import Car from "../../entities/car.entity";
-import { ICar } from "../../interfaces/Cars/cars.interface";
+import { ICar } from "../../interfaces/cars.interface";
 import { Repository } from "typeorm";
 import { carReturnSchema } from "../../schema/car.schemas";
 
@@ -11,9 +11,9 @@ const createdCarService = async (dataBody: ICar) => {
 
   await carRepository.save(createCar);
 
-  const treco = carReturnSchema.parse(createCar);
+  const car = carReturnSchema.parse(createCar);
 
-  return treco;
+  return car;
 };
 
-export default createdCarService
+export default createdCarService;

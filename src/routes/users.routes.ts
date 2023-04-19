@@ -4,6 +4,7 @@ import {
   deleteUserController,
   getUsersController,
   updateUserController,
+  userRetriveController,
 } from "../controllers/User/usersControllers";
 import { ensureAuthMiddleware } from "../middleware/ensureAuth.middleware";
 
@@ -15,7 +16,7 @@ userRouter.post("", createdUserController);
 //Leitura de todos usuarios
 userRouter.get("", getUsersController);
 
-userRouter.get("/:id", getUsersController);
+userRouter.get("/:id", userRetriveController);
 //Update usuario
 userRouter.patch("", ensureAuthMiddleware, updateUserController);
 

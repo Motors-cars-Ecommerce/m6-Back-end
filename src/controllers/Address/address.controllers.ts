@@ -1,12 +1,12 @@
 import { Response, Request } from "express";
-import createdAddressService from "../services/adderess/createdAddress.service";
-import listAddressService from "../services/adderess/listAddress.service";
-import updatedAddressService from "../services/adderess/updatedAddress.service";
+import createdAddressService from "../../services/adderess/createdAddress.service";
+import listAddressService from "../../services/adderess/listAddress.service";
+import updatedAddressService from "../../services/adderess/updatedAddress.service";
 import {
   IAddress,
   IAddressResponse,
   IAddressUpdated,
-} from "../interfaces/address.interfaces";
+} from "../../interfaces/address.interfaces";
 
 const createdAddressController = async (req: Request, res: Response) => {
   const data: IAddress = req.body;

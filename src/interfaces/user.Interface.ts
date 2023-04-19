@@ -4,7 +4,7 @@ import {
   listUsersSchema,
   userReturnSchema,
   userSchema,
-} from "../../schema/user.schema";
+} from "../schema/user.schema";
 
 type IUserRequest = z.infer<typeof userSchema>;
 type IUsers = z.infer<typeof listUsersSchema>;
