@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import Address from "../../entities/address.entity";
 import User from "../../entities/user.entity";
 import { AppError } from "../../errors/AppError";
-import { IUser, IUserRequest } from "../../interfaces/Users/user.Interface";
+import { IUser, IUserRequest } from "../../interfaces/user.Interface";
 
 export const createdUserService = async (
   dataBody: IUserRequest

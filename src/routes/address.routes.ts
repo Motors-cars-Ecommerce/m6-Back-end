@@ -3,7 +3,7 @@ import {
   createdAddressController,
   listAddressController,
   updatedAddressController,
-} from "../controllers/address.controllers";
+} from "../controllers/Address/address.controllers";
 
 const addressRoutes = Router();
 

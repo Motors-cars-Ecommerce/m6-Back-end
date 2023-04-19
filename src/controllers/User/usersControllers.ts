@@ -1,12 +1,9 @@
 import { Request, Response } from "express";
-import {
-  IUserRequest,
-  IUserUpdate,
-} from "../../interfaces/Users/user.Interface";
-import { createdUserService } from "../../services/User/createdUserService";
-import { getUserService } from "../../services/User/getUserService";
-import { updateUserService } from "../../services/User/updateUserService";
-import { deleteUserService } from "../../services/User/deleteUserService";
+import { IUserRequest, IUserUpdate } from "../../interfaces/user.Interface";
+import { createdUserService } from "../../services/User/createdUser.service";
+import { getUserService } from "../../services/User/getUser.service";
+import { updateUserService } from "../../services/User/updateUser.service";
+import { deleteUserService } from "../../services/User/deleteUser.service";
 import { retriveUserService } from "../../services/User/userRetrive.service";
 
 export const createdUserController = async (req: Request, res: Response) => {

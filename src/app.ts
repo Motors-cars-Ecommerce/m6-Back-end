@@ -10,9 +10,9 @@ import addressRoutes from "./routes/address.routes";
 
 import commentsRouter from "./routes/comments.routes";
 
-import loginRouter from "./routes/loginRoutes";
+import loginRouter from "./routes/login.routes";
 import carsRouter from "./routes/cars.routes";
-import modelRouter from "./routes/modelsCarsRoutes";
+import modelRouter from "./routes/modelsCars.routes";
 import imageRouter from "./routes/image.routes";
 
 const app = express();
