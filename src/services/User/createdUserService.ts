@@ -1,20 +1,31 @@
 import AppDataSource from "../../data-source";
+import Address from "../../entities/address.entity";
 import User from "../../entities/user.entity";
 import { AppError } from "../../errors/AppError";
-import { IUserRequest } from "../../interfaces/Users/user.Interface";
+import { IUser, IUserRequest } from "../../interfaces/Users/user.Interface";
 
-export const createdUserService = async (dataBody: IUserRequest) => {
+export const createdUserService = async (
+  dataBody: IUserRequest
+): Promise<IUser> => {
+  console.log(dataBody.addresses);
+  const { addresses, ...res } = dataBody;
+
   const userRepository = AppDataSource.getRepository(User);
+  const addressRepository = AppDataSource.getRepository(Address);
 
-  const userExist = await userRepository.findOneBy({
-    email: dataBody.email,
+  const createUser = userRepository.create(res);
+  await userRepository.save(createUser);
+
+  const user = await userRepository.findOne({
+    where: { email: dataBody.email },
   });
 
-  if (userExist) {
-    throw new AppError("Client already exists", 400);
-  }
+  const createAddres = addressRepository.create({
+    ...addresses,
+    user: user,
+  });
 
-  const createUser = userRepository.create(dataBody);
-  await userRepository.save(createUser);
-  return createUser;
+  await addressRepository.save(createAddres);
+
+  return user;
 };
