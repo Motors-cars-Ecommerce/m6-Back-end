@@ -7,19 +7,12 @@ import {
 } from "../../interfaces/address.interfaces";
 
 const createdAddressService = async (
-  data: IAddress,
-  userId: string
+  data: IAddress
 ): Promise<IAddressResponse> => {
   const addressRepo = AppDataSource.getRepository(Address);
-  const userRepo = AppDataSource.getRepository(User);
 
-  const userObj = await userRepo.findOneBy({ id: userId });
-
-  const newAddress = addressRepo.create({
-    user: userObj,
-    ...data,
-  });
-
+  const newAddress:Address = addressRepo.create(data);
+  console.log(newAddress)
   await addressRepo.save(newAddress);
 
   return newAddress;

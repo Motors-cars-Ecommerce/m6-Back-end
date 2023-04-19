@@ -9,10 +9,9 @@ import {
 } from "../../interfaces/address.interfaces";
 
 const createdAddressController = async (req: Request, res: Response) => {
-  const userId: string = "03aa00c2-c742-423c-a119-4d041ecbc839";
   const data: IAddress = req.body;
-
-  const addressData = await createdAddressService(data, userId);
+  
+  const addressData = await createdAddressService(data);
 
   return res.status(201).json(addressData);
 };

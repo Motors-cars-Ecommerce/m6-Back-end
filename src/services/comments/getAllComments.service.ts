@@ -5,12 +5,10 @@ import Comment from "../../entities/comment.entity"
 
 
 
-export const listAllCommentsService =async (carId:any) => {
+export const listAllCommentsService =async () => {
     const commentsRepository: Repository<Comment> = AppDataSource.getRepository(Comment)
 
-    const comments = await commentsRepository.findOneBy({
-        car: carId
-    })
+    const comments = await commentsRepository.find()
 
     const returnComments = returnCommentsArraySchema.parse(comments)
 
