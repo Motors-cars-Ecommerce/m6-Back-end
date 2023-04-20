@@ -5,11 +5,12 @@ import { getCarsService } from "../../services/Cars/getCars.service";
 import getCarByIdService from "../../services/Cars/getCarById.service";
 import updateCarService from "../../services/Cars/updateCars.service";
 import { deleteCarService } from "../../services/Cars/deleteCars.service";
+import getUserCarsService from "../../services/Cars/getUserCars.service";
 
 export const createdCarsController = async (req: Request, res: Response) => {
-  const carDataBody: ICar = req.body;
+  const carDataBody = req.body;
   const newCar = await createdCarService(carDataBody);
-  console.log(newCar);
+
   return res.status(201).json(newCar);
 };
 
@@ -25,6 +26,14 @@ export const getCarByIdController = async (req: Request, res: Response) => {
     return res.status(404).json({ message: "Car not found" });
   }
   return res.json(car);
+};
+
+export const getUserCarsController = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  console.log(id);
+  const cars = await getUserCarsService(id);
+
+  return res.status(200).json(cars);
 };
 
 export const updateCarController = async (req: Request, res: Response) => {

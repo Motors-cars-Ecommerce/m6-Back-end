@@ -28,6 +28,9 @@ class Car {
   @Column()
   description: string;
 
+  @Column()
+  main_image: string;
+
   @ManyToOne(() => User, (user) => user.cars)
   user: User;
 

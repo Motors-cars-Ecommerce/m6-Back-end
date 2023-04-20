@@ -11,8 +11,8 @@ const createdAddressService = async (
 ): Promise<IAddressResponse> => {
   const addressRepo = AppDataSource.getRepository(Address);
 
-  const newAddress:Address = addressRepo.create(data);
-  console.log(newAddress)
+  const newAddress: Address = addressRepo.create(data);
+
   await addressRepo.save(newAddress);
 
   return newAddress;
