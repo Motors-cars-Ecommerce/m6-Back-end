@@ -6,8 +6,8 @@ export const getUserService = async () => {
 
   const users = await userRepository.find({
     relations: {
-      addresses: true,
       cars: true,
+      address: true,
     },
   });
 

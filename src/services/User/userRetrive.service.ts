@@ -1,5 +1,6 @@
 import AppDataSource from "../../data-source";
 import User from "../../entities/user.entity";
+import { userReturnSchema } from "../../schema/user.schema";
 
 export const retriveUserService = async (userId: string) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -9,10 +10,12 @@ export const retriveUserService = async (userId: string) => {
       id: userId,
     },
     relations: {
-      addresses: true,
+      address: true,
       cars: true,
     },
   });
 
-  return user;
+  const returnedUser = userReturnSchema.parse(user);
+
+  return returnedUser;
 };

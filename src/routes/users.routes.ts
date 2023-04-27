@@ -7,6 +7,7 @@ import {
   userRetriveController,
 } from "../controllers/User/usersControllers";
 import { ensureAuthMiddleware } from "../middleware/ensureAuth.middleware";
+import { getUserCarsController } from "../controllers/Cars/carsControllers";
 
 const userRouter = Router();
 
@@ -17,6 +18,8 @@ userRouter.post("", createdUserController);
 userRouter.get("", getUsersController);
 
 userRouter.get("/:id", userRetriveController);
+
+userRouter.get("/:id/cars", getUserCarsController);
 //Update usuario
 userRouter.patch("", ensureAuthMiddleware, updateUserController);
 

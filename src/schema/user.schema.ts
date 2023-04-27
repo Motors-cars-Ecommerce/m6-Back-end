@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { listAddressSchema } from "./address.schema";
+import { listCarSchema } from "./car.schemas";
 
 const userSchema = z.object({
   name: z.string(),
