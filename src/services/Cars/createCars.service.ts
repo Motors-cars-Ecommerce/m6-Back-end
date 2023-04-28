@@ -3,8 +3,6 @@ import Car from "../../entities/car.entity";
 import Image from "../../entities/image.entity";
 import ModelsCar from "../../entities/modelCar.entity";
 import { ICar } from "../../interfaces/cars.interface";
-import { Repository } from "typeorm";
-import { carReturnSchema } from "../../schema/car.schemas";
 
 const createdCarService = async (dataBody: ICar) => {
   const carRepository = AppDataSource.getRepository(Car);

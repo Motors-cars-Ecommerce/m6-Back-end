@@ -8,22 +8,20 @@ import {
 } from "../controllers/User/usersControllers";
 import { ensureAuthMiddleware } from "../middleware/ensureAuth.middleware";
 import { getUserCarsController } from "../controllers/Cars/carsControllers";
+import { ensureUserExists } from "../middleware/User/userDoesntExist.middleware";
 
 const userRouter = Router();
 
-//Criação de usuario
-userRouter.post("", createdUserController);
+userRouter.post("", ensureUserExists, createdUserController);
 
-//Leitura de todos usuarios
 userRouter.get("", getUsersController);
 
 userRouter.get("/:id", userRetriveController);
 
 userRouter.get("/:id/cars", getUserCarsController);
-//Update usuario
+
 userRouter.patch("", ensureAuthMiddleware, updateUserController);
 
-//deletar usuario
 userRouter.delete("", ensureAuthMiddleware, deleteUserController);
 
 export default userRouter;

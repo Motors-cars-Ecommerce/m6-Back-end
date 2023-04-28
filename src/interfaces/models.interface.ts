@@ -1,28 +1,15 @@
-import { UUID } from "crypto";
+import { z } from "zod";
 
-export interface ICarModelRequest{
-    branded:string,
-    model: string,
-    year: string,
-    fuel: string,
-}
+import {
+  modelCarReturnSchema,
+  modelCarSchema,
+  carModelUpdateSchema,
+} from "../schema/modelCar.schemas";
 
-export interface ICarModelResponse{
-    id: UUID;
-    branded:string,
-    model: string,
-    year: string,
-    fuel: string,
-}
-export interface ICarModelRequestGetModel{
-    model: string,
-}
-  
-   
+export type ICarModelRequest = z.infer<typeof modelCarSchema>;
+export type ICarModelResponse = z.infer<typeof modelCarReturnSchema>;
+export type ICarModelUpdate = z.infer<typeof carModelUpdateSchema>;
 
-export interface ICarModelUpdate{
-    branded?:string,
-    model?: string,
-    year?: string,
-    fuel?: string,
+export interface ICarModelRequestGetModel {
+  model: string;
 }

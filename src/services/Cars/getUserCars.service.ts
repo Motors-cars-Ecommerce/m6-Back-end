@@ -3,15 +3,12 @@ import AppDataSource from "../../data-source";
 import User from "../../entities/user.entity";
 
 export const getUserCarsService = async (id: any) => {
-  const userRepository = AppDataSource.getRepository(User);
-  const user = await userRepository.findOneBy({
-    id: id,
-  });
-
   const carRepository = AppDataSource.getRepository(Car);
   const cars = await carRepository.find({
     where: {
-      user: !user,
+      user: {
+        id: id,
+      },
     },
     relations: {
       images: true,
@@ -21,7 +18,6 @@ export const getUserCarsService = async (id: any) => {
     },
   });
 
-  console.log(id);
   return cars;
 };
 

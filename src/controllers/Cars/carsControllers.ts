@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ICar, ICarRequest } from "../../interfaces/cars.interface";
+import { ICar } from "../../interfaces/cars.interface";
 import createdCarService from "../../services/Cars/createCars.service";
 import { getCarsService } from "../../services/Cars/getCars.service";
 import getCarByIdService from "../../services/Cars/getCarById.service";
@@ -22,15 +22,13 @@ export const getCarsController = async (req: Request, res: Response) => {
 export const getCarByIdController = async (req: Request, res: Response) => {
   const { id } = req.params;
   const car = await getCarByIdService(id);
-  if (!car) {
-    return res.status(404).json({ message: "Car not found" });
-  }
-  return res.json(car);
+
+  return res.status(200).json(car);
 };
 
 export const getUserCarsController = async (req: Request, res: Response) => {
   const id = req.params.id;
-  console.log(id);
+
   const cars = await getUserCarsService(id);
 
   return res.status(200).json(cars);
@@ -38,12 +36,10 @@ export const getUserCarsController = async (req: Request, res: Response) => {
 
 export const updateCarController = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const carDataBody: ICarRequest = req.body;
+  const carDataBody: ICar = req.body;
   const updatedCar = await updateCarService(id, carDataBody);
-  if (!updatedCar) {
-    return res.status(404).json({ message: "Car not found" });
-  }
-  return res.json(updatedCar);
+
+  return res.status(200).json(updatedCar);
 };
 
 export const deleteCarController = async (req: Request, res: Response) => {

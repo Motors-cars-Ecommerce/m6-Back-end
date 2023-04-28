@@ -17,10 +17,6 @@ export const getCarByIdService = async (id: string) => {
     },
   });
 
-  if (!car) {
-    throw new AppError("Car not found", 409);
-  }
-
   return car;
 };
 

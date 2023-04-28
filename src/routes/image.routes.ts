@@ -1,20 +1,31 @@
 import { Router } from "express";
 import { ensureAuthMiddleware } from "../middleware/ensureAuth.middleware";
-import { createdImageController, deleteImageController, listImagesControllers, updatedImageController } from "../controllers/Image/imageControllers";
+import {
+  createdImageController,
+  deleteImageController,
+  listImagesControllers,
+  updatedImageController,
+} from "../controllers/Image/image.controllers";
+import ensureUUIDIsValid from "../middleware/ensureUUIDIsValid.middleware";
 
+const imageRouter = Router();
 
-const imageRouter = Router()
+imageRouter.post("", ensureAuthMiddleware, createdImageController);
 
-//Criar imagem 
-imageRouter.post ("", ensureAuthMiddleware, createdImageController)
+imageRouter.get("", listImagesControllers);
 
-//Listar Imagens
-imageRouter.get ("", ensureAuthMiddleware, listImagesControllers)
+imageRouter.patch(
+  "/:id",
+  ensureAuthMiddleware,
+  ensureUUIDIsValid,
+  updatedImageController
+);
 
-//Update imagem
-imageRouter. patch("/:id", ensureAuthMiddleware, updatedImageController)
+imageRouter.delete(
+  "/:id",
+  ensureAuthMiddleware,
+  ensureUUIDIsValid,
+  deleteImageController
+);
 
-//Deleção de imagem pelo id
-imageRouter.delete("/:id", ensureAuthMiddleware, deleteImageController)
-
-export default imageRouter
+export default imageRouter;

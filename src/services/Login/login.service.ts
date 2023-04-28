@@ -14,14 +14,6 @@ export const loginService = async (data: IUserLogin) => {
 
   const passwordMatch = await compare(data.password, userExist.password);
 
-  if (!userExist.email) {
-    throw new AppError("Email or password invalid 1", 403);
-  }
-
-  if (!userExist.isActive) {
-    throw new AppError("non-active user", 400);
-  }
-
   if (!passwordMatch) {
     throw new AppError("Email or password invalid", 403);
   }
