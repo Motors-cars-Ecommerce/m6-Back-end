@@ -9,6 +9,7 @@ import ModelsCar from "./entities/modelCar.entity";
 import User from "./entities/user.entity";
 import { InitialMigration1681411654011 } from "./migrations/1681411654011-InitialMigration";
 import { CarMigration1681943950468 } from "./migrations/1681943950468-carMigration";
+import { Descriptionuser1682689667595 } from "./migrations/1682689667595-Descriptionuser";
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -28,7 +29,11 @@ const AppDataSource = new DataSource(
         logging: true,
         synchronize: false,
         entities: [Address, Car, Comment, Image, ModelsCar, User],
-        migrations: [InitialMigration1681411654011, CarMigration1681943950468],
+        migrations: [
+          InitialMigration1681411654011,
+          CarMigration1681943950468,
+          Descriptionuser1682689667595,
+        ],
       }
 );
 
