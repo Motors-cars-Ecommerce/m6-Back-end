@@ -1,24 +1,23 @@
 import { Router } from "express";
-import { createdModelController, deleteCarByIdController, listCarByIdController, listCarsModelsController, updateCarByIdController } from "../controllers/ModelsCars/modelCarsControllers";
+import {
+  createdModelController,
+  deleteCarByIdController,
+  listCarByIdController,
+  listCarsModelsController,
+  updateCarByIdController,
+} from "../controllers/ModelsCars/modelCarsControllers";
 import { ensureAuthMiddleware } from "../middleware/ensureAuth.middleware";
 
+const modelRouter = Router();
 
-const modelRouter = Router()
+modelRouter.post("", ensureAuthMiddleware, createdModelController);
 
-//Criar model 
-modelRouter.post("", ensureAuthMiddleware,createdModelController)
+modelRouter.get("", ensureAuthMiddleware, listCarsModelsController);
 
-//lista de todos os carros referentes a modelo
-modelRouter.get("", ensureAuthMiddleware,listCarsModelsController)
+modelRouter.get("/:id", ensureAuthMiddleware, listCarByIdController);
 
-//lista de carro pelo id
-modelRouter.get("/:id", ensureAuthMiddleware, listCarByIdController)
+modelRouter.delete("/:id", ensureAuthMiddleware, deleteCarByIdController);
 
-//Deletar carro pelo id 
-modelRouter.delete("/:id", ensureAuthMiddleware, deleteCarByIdController)
+modelRouter.patch("/:id", ensureAuthMiddleware, updateCarByIdController);
 
-//update carro pelo id
-modelRouter.patch("/:id", ensureAuthMiddleware, updateCarByIdController)
-
-
-export default modelRouter
+export default modelRouter;

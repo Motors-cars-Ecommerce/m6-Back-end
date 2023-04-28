@@ -10,10 +10,10 @@ class Comment {
   @Column()
   text: string;
 
-  @ManyToOne(() => Car, (car) => car.comments)
+  @ManyToOne(() => Car, (car) => car.comments, { onDelete: "CASCADE" })
   car: Car;
 
-  @ManyToOne(() => User, (user) => user.comments)
+  @ManyToOne(() => User, (user) => user.comments, { onDelete: "CASCADE" })
   user: User;
 }
 

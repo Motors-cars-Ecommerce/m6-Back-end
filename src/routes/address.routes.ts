@@ -4,12 +4,18 @@ import {
   listAddressController,
   updatedAddressController,
 } from "../controllers/Address/address.controllers";
+import ensureUUIDIsValid from "../middleware/ensureUUIDIsValid.middleware";
+import { ensureAuthMiddleware } from "../middleware/ensureAuth.middleware";
 
 const addressRoutes = Router();
 
 addressRoutes.get("", listAddressController);
-addressRoutes.post("", createdAddressController);
-addressRoutes.patch("/:id", updatedAddressController);
-addressRoutes.delete("");
+addressRoutes.post("", ensureAuthMiddleware, createdAddressController);
+addressRoutes.patch(
+  "/:id",
+  ensureAuthMiddleware,
+  ensureUUIDIsValid,
+  updatedAddressController
+);
 
 export default addressRoutes;

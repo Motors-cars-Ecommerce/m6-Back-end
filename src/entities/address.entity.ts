@@ -21,7 +21,7 @@ class Address {
   @Column()
   complement: string;
 
-  @ManyToOne(() => User, (user) => user.address)
+  @ManyToOne(() => User, (user) => user.address, { cascade: true })
   user: User;
 }
 

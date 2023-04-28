@@ -15,7 +15,5 @@ export const retriveUserService = async (userId: string) => {
     },
   });
 
-  const returnedUser = userReturnSchema.parse(user);
-
-  return returnedUser;
+  return user;
 };

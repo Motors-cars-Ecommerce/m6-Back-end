@@ -30,4 +30,15 @@ const userReturnSchema = z.object({
 
 const listUsersSchema = userReturnSchema.array();
 
-export { userSchema, userUpdateSchema, userReturnSchema, listUsersSchema };
+const loginSchema = z.object({
+  email: z.string(),
+  password: z.string(),
+});
+
+export {
+  userSchema,
+  userUpdateSchema,
+  userReturnSchema,
+  listUsersSchema,
+  loginSchema,
+};
