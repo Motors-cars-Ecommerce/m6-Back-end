@@ -1,53 +1,55 @@
-import {Response, Request} from 'express'
-import { createCommentService } from '../../services/comments/createComment.service'
-import { IComment, ICommentUpdate } from '../../interfaces/comments.interface'
-import { updateCommentService } from '../../services/comments/updateComment.service'
-import { listAllCommentsService } from '../../services/comments/getAllComments.service'
-import { retriveCommentService } from '../../services/comments/retriveComment.service'
-import { deleteCommentservice } from '../../services/comments/deleteComment.service'
+import { Response, Request } from "express";
+import { createCommentService } from "../../services/comments/createComment.service";
+import { IComment, ICommentUpdate } from "../../interfaces/comments.interface";
+import { updateCommentService } from "../../services/comments/updateComment.service";
+import { listAllCommentsService } from "../../services/comments/getAllComments.service";
+import { retriveCommentService } from "../../services/comments/retriveComment.service";
+import { deleteCommentservice } from "../../services/comments/deleteComment.service";
 
+const createCommentControler = async (req: Request, res: Response) => {
+  const data: IComment = req.body;
 
+  const comment = await createCommentService(data);
 
-const createCommentControler =async (req:Request, res:Response) => {
-    const data: IComment = req.body
+  return res.status(201).json(comment);
+};
 
-    const comment = await createCommentService(data)
+const updateCommentController = async (req: Request, res: Response) => {
+  const data: ICommentUpdate = req.body;
+  const commentId: string = req.params.id;
 
-    return res.status(201).json(comment)
-}
+  const newComent = await updateCommentService(data, commentId);
 
-const updateCommentController = async (req:Request, res:Response) => {
-    const data:ICommentUpdate = req.body
-    const commentId:string = req.params.id
+  return res.status(200).json(newComent);
+};
 
-    const newComent = await updateCommentService(data, commentId)
+const listAllCommentsController = async (req: Request, res: Response) => {
+  const carId: string = req.params.id;
+  const allComments = await listAllCommentsService(carId);
 
-    return res.status(200).json(newComent)
-}
+  return res.status(200).json(allComments);
+};
 
-const listAllCommentsController =async (req:Request, res:Response) => {
-    const allComments = await listAllCommentsService()
+const retriveCommentsController = async (req: Request, res: Response) => {
+  const commentId = req.params.id;
 
-    return res.status(200).json(allComments)
-}
+  const comment = await retriveCommentService(commentId);
 
-const retriveCommentsController =async (req:Request, res:Response) => {
-    const commentId = req.params.id
+  return res.status(200).json(comment);
+};
 
-    const comment = await retriveCommentService(commentId)
+const deleteCommentController = async (req: Request, res: Response) => {
+  const commentId = req.params.id;
 
-    return res.status(200).json(comment)
-}
+  await deleteCommentservice(commentId);
 
-const deleteCommentController =async (req:Request, res:Response)  => {
-    const commentId = req.params.id
-
-    await deleteCommentservice(commentId)
-
-    return res.status(204).send()
-}
-
+  return res.status(204).send();
+};
 
 export {
-    createCommentControler, updateCommentController, listAllCommentsController, retriveCommentsController, deleteCommentController
-}
+  createCommentControler,
+  updateCommentController,
+  listAllCommentsController,
+  retriveCommentsController,
+  deleteCommentController,
+};

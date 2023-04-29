@@ -16,7 +16,7 @@ export const ensureCarDoesntExists = async (
     id: carId,
   });
 
-  if (existingCar) {
+  if (!existingCar) {
     throw new AppError("this car is not registered", 409);
   }
 
