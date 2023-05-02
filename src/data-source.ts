@@ -7,9 +7,7 @@ import Comment from "./entities/comment.entity";
 import Image from "./entities/image.entity";
 import ModelsCar from "./entities/modelCar.entity";
 import User from "./entities/user.entity";
-import { InitialMigration1681411654011 } from "./migrations/1681411654011-InitialMigration";
-import { CarMigration1681943950468 } from "./migrations/1681943950468-carMigration";
-import { Descriptionuser1682689667595 } from "./migrations/1682689667595-Descriptionuser";
+import { CreatedTables1683050948014 } from "./migrations/1683050948014-createdTables";
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -30,9 +28,7 @@ const AppDataSource = new DataSource(
         synchronize: false,
         entities: [Address, Car, Comment, Image, ModelsCar, User],
         migrations: [
-          InitialMigration1681411654011,
-          CarMigration1681943950468,
-          Descriptionuser1682689667595,
+          CreatedTables1683050948014
         ],
       }
 );
