@@ -9,7 +9,7 @@ export const retriveUserService = async (userId: string) => {
       id: userId,
     },
     relations: {
-      addresses: true,
+      address: true,
       cars: true,
     },
   });
