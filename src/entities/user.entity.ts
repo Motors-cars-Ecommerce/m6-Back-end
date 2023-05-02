@@ -35,6 +35,9 @@ class User {
   phone: string;
 
   @Column()
+  description: string;
+
+  @Column()
   birthday: Date;
 
   @Column({ default: false })
@@ -54,14 +57,14 @@ class User {
   hashPassword() {
     this.password = hashSync(this.password, 10);
   }
-  
-  @OneToMany(() => Address, (address) => address.user)
+
+  @OneToMany(() => Address, (address) => address.user, { cascade: true })
   address: Address[];
 
-  @OneToMany(() => Car, (car) => car.user)
+  @OneToMany(() => Car, (car) => car.user, { cascade: true })
   cars: Car[];
 
-  @OneToMany(() => Comment, (comment) => comment.user)
+  @OneToMany(() => Comment, (comment) => comment.user, { cascade: true })
   @JoinColumn()
   comments: Comment[];
 }

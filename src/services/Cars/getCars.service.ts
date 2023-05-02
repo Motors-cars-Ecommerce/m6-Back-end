@@ -8,10 +8,10 @@ export const getCarsService = async () => {
     relations: {
       model_car: true,
       user: true,
+      comments: true,
+      images: true,
     },
   });
-
-  console.log(cars);
 
   return cars;
 };

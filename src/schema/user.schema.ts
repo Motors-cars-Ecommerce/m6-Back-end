@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { listAddressSchema } from "./address.schema";
+import { listCarSchema } from "./car.schemas";
 
 const userSchema = z.object({
   name: z.string(),
@@ -29,4 +30,15 @@ const userReturnSchema = z.object({
 
 const listUsersSchema = userReturnSchema.array();
 
-export { userSchema, userUpdateSchema, userReturnSchema, listUsersSchema };
+const loginSchema = z.object({
+  email: z.string(),
+  password: z.string(),
+});
+
+export {
+  userSchema,
+  userUpdateSchema,
+  userReturnSchema,
+  listUsersSchema,
+  loginSchema,
+};

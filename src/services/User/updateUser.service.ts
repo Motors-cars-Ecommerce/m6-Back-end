@@ -3,22 +3,19 @@ import User from "../../entities/user.entity";
 import { AppError } from "../../errors/AppError";
 import { IUserUpdate } from "../../interfaces/user.Interface";
 
-export const updateUserService = async (dataBody: IUserUpdate, id) => {
+export const updateUserService = async (dataBody: IUserUpdate, id: string) => {
   const userRepository = AppDataSource.getRepository(User);
 
   const userExists = await userRepository.findOneBy({
     id,
   });
 
-  if (!userExists) {
-    throw new AppError("user does not exist", 404);
-  }
-
-  await userRepository.update({ id: id }, { ...dataBody });
-
-  const updateUser = await userRepository.findOneBy({
-    id,
+  const user = userRepository.create({
+    ...userExists,
+    ...dataBody,
   });
 
-  return updateUser;
+  await userRepository.save(user);
+
+  return user;
 };

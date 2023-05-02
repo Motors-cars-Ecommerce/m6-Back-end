@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { loginController } from "../controllers/Login/loginControllers";
+import { ensureEmailExists } from "../middleware/Login/userEmailExist.middleware";
 
-const loginRouter = Router()
+const loginRouter = Router();
 
-//login 
-loginRouter.post('', loginController)
+loginRouter.post("", ensureEmailExists, loginController);
 
-export default loginRouter
+export default loginRouter;

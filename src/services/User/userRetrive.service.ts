@@ -1,5 +1,6 @@
 import AppDataSource from "../../data-source";
 import User from "../../entities/user.entity";
+import { userReturnSchema } from "../../schema/user.schema";
 
 export const retriveUserService = async (userId: string) => {
   const userRepository = AppDataSource.getRepository(User);

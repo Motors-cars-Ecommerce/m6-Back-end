@@ -28,16 +28,19 @@ class Car {
   @Column()
   description: string;
 
-  @ManyToOne(() => User, (user) => user.cars)
+  @Column()
+  main_image: string;
+
+  @ManyToOne(() => User, (user) => user.cars, { onDelete: "CASCADE" })
   user: User;
 
   @ManyToOne(() => ModelsCar, (model) => model.cars)
   model_car: ModelsCar;
 
-  @OneToMany(() => Image, (image) => image.car)
+  @OneToMany(() => Image, (image) => image.car, { onDelete: "CASCADE" })
   images: Image[];
 
-  @OneToMany(() => Comment, (comment) => comment.car)
+  @OneToMany(() => Comment, (comment) => comment.car, { onDelete: "CASCADE" })
   //@JoinColumn()
   comments: Comment[];
 }

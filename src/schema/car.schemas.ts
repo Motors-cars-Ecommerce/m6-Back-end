@@ -1,26 +1,32 @@
-import { z } from "zod";
-import { modelCarReturnSchema } from "./modelCar.schemas";
+import { string, z } from "zod";
+import { modelCarReturnSchema, modelCarSchema } from "./modelCar.schemas";
+import { userReturnSchema } from "./user.schema";
+import { listImagesSchema } from "./image.schema";
+import { returnCommentsArraySchema } from "./comments.schema";
 
 export const carSchema = z.object({
   km: z.number(),
   price: z.number(),
   color: z.string(),
   description: z.string(),
+  main_image: z.string(),
   model_car: z.any(),
-  user: z.any()
+  user: z.any(),
+  images: z.any(),
 });
 
-export const carReturnSchema = z.lazy(() =>
-  z.object({
-    id: z.string(),
-    km: z.number(),
-    price: z.number(),
-    color: z.string(),
-    description: z.string(),
-    model_car: z.string(),
-    user: z.string()
-  })
-);
+export const carReturnSchema = z.object({
+  id: z.string(),
+  km: z.number(),
+  price: z.number(),
+  color: z.string(),
+  description: z.string(),
+  main_image: z.string(),
+  model_car: modelCarSchema,
+  images: listImagesSchema,
+  comments: returnCommentsArraySchema,
+  user: z.string(),
+});
 
 export const carUpdateSchema = z.object({
   km: z.number().nullable(),
@@ -30,3 +36,5 @@ export const carUpdateSchema = z.object({
   image: z.any().nullable(),
   model_car: modelCarReturnSchema.nullable(),
 });
+
+export const listCarSchema = carReturnSchema.array();

@@ -21,7 +21,10 @@ class Address {
   @Column()
   complement: string;
 
-  @ManyToOne(() => User, (user) => user.address)
+  @Column()
+  state:string;
+
+  @ManyToOne(() => User, (user) => user.address, { onDelete: "CASCADE" })
   user: User;
 }
 
