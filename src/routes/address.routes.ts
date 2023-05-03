@@ -11,11 +11,6 @@ const addressRoutes = Router();
 
 addressRoutes.get("", listAddressController);
 addressRoutes.post("", ensureAuthMiddleware, createdAddressController);
-addressRoutes.patch(
-  "/:id",
-  ensureAuthMiddleware,
-  ensureUUIDIsValid,
-  updatedAddressController
-);
+addressRoutes.patch("/", ensureAuthMiddleware, updatedAddressController);
 
 export default addressRoutes;

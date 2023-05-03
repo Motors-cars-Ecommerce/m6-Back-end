@@ -10,7 +10,7 @@ import {
 
 const createdAddressController = async (req: Request, res: Response) => {
   const data: IAddress = req.body;
-  
+
   const addressData = await createdAddressService(data);
 
   return res.status(201).json(addressData);
@@ -23,10 +23,10 @@ const listAddressController = async (req: Request, res: Response) => {
 };
 
 const updatedAddressController = async (req: Request, res: Response) => {
-  const addressId: string = req.params.id;
+  const userId: string = req.user.id;
   const data: IAddressUpdated = req.body;
 
-  const updatedAddress = await updatedAddressService(data, addressId);
+  const updatedAddress = await updatedAddressService(data, userId);
 
   return res.status(200).json(updatedAddress);
 };

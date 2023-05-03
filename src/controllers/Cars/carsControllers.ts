@@ -9,6 +9,7 @@ import getUserCarsService from "../../services/Cars/getUserCars.service";
 
 export const createdCarsController = async (req: Request, res: Response) => {
   const carDataBody = req.body;
+  console.log(carDataBody);
   const newCar = await createdCarService(carDataBody);
 
   return res.status(201).json(newCar);
