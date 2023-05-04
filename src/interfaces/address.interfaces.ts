@@ -8,6 +8,6 @@ import {
 
 type IAddress = z.infer<typeof addressSchema>;
 type IAddressResponse = z.infer<typeof responseAddressSchema>;
-type IAddressUpdated = DeepPartial<IAddress>;
+type IAddressUpdated = z.infer<typeof addressUpdatedSchema>;
 
 export { IAddress, IAddressResponse, IAddressUpdated };
