@@ -19,7 +19,7 @@ class Image {
   @Column()
   image_url: string;
 
-  @ManyToOne(() => Car, (car) => car.images, { cascade: true })
+  @ManyToOne(() => Car, (car) => car.images, { onDelete: "CASCADE" })
   car: Car;
 }
 

@@ -40,10 +40,10 @@ class Car {
   @ManyToOne(() => ModelsCar, (model) => model.cars)
   model_car: ModelsCar;
 
-  @OneToMany(() => Image, (image) => image.car, { onDelete: "CASCADE" })
+  @OneToMany(() => Image, (image) => image.car, { cascade: true })
   images: Image[];
 
-  @OneToMany(() => Comment, (comment) => comment.car, { onDelete: "CASCADE" })
+  @OneToMany(() => Comment, (comment) => comment.car, { cascade: true })
   comments: Comment[];
 }
 
