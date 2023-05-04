@@ -3,10 +3,7 @@ import { ICarUpdated } from "../../interfaces/cars.interface";
 import AppDataSource from "../../data-source";
 import { carResponseSchema } from "../../schema/car.schemas";
 
-export const updateCarService = async (
-  id: string,
-  updateFields: ICarUpdated
-) => {
+export const updateCarService = async (id: string, updateFields: any) => {
   const carRepository = AppDataSource.getRepository(Car);
   const oldCar = await carRepository.findOneBy({
     id: id,
