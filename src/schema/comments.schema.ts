@@ -13,8 +13,8 @@ const commentUpdateSchema = commentSchema.partial();
 const returnCommentSchema = z.object({
   id: z.string(),
   text: z.string(),
-  car: carResponseSchema,
-  user: userSchemaResponse,
+  car: z.any(),
+  user: z.any(),
 });
 
 const returnCommentsArraySchema = returnCommentSchema.array();

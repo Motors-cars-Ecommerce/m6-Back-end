@@ -33,9 +33,23 @@ export const carReturnSchema = z.object({
   description: z.string(),
   main_image: z.string(),
   isActive: z.boolean(),
-  model_car: modelCarSchema,
+  model_car: modelCarReturnSchema,
   images: listImagesSchema,
   comments: returnCommentsArraySchema,
+  user: userSchemaResponse,
+});
+
+export const carResponseArraySchema = z.object({
+  id: z.string(),
+  km: z.number(),
+  price: z.number(),
+  color: z.string(),
+  description: z.string(),
+  main_image: z.string(),
+  isActive: z.boolean(),
+  model_car: z.any(),
+  images: z.any(),
+  comments: z.any(),
   user: userSchemaResponse,
 });
 
@@ -49,4 +63,4 @@ export const carUpdateSchema = z.object({
   model_car: modelCarReturnSchema.nullable(),
 });
 
-export const listCarSchema = carReturnSchema.array();
+export const listCarSchema = carResponseArraySchema.array();
