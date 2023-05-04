@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { listAddressSchema } from "./address.schema";
-import { listCarSchema } from "./car.schemas";
+import { carReturnSchema, listCarSchema } from "./car.schemas";
 
 const userSchema = z.object({
   name: z.string(),
@@ -14,6 +14,19 @@ const userSchema = z.object({
   addresses: z.any(),
 });
 
+const userSchemaResponse = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string(),
+  cpf: z.string(),
+  phone: z.string(),
+  description: z.string(),
+  birthday: z.date(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  seller: z.boolean(),
+});
+
 const userUpdateSchema = userSchema.partial();
 
 const userReturnSchema = z.object({
@@ -22,10 +35,13 @@ const userReturnSchema = z.object({
   email: z.string(),
   cpf: z.string(),
   phone: z.string(),
+  description: z.string(),
   birthday: z.date(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
   seller: z.boolean(),
-  isActive: z.boolean(),
-  address: listAddressSchema,
+  address: z.any(),
+  cars: z.any(),
 });
 
 const listUsersSchema = userReturnSchema.array();
@@ -41,4 +57,5 @@ export {
   userReturnSchema,
   listUsersSchema,
   loginSchema,
+  userSchemaResponse,
 };

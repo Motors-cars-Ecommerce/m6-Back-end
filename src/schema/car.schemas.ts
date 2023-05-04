@@ -1,6 +1,6 @@
 import { string, z } from "zod";
 import { modelCarReturnSchema, modelCarSchema } from "./modelCar.schemas";
-import { userReturnSchema } from "./user.schema";
+import { userReturnSchema, userSchemaResponse } from "./user.schema";
 import { listImagesSchema } from "./image.schema";
 import { returnCommentsArraySchema } from "./comments.schema";
 
@@ -15,6 +15,16 @@ export const carSchema = z.object({
   images: z.any(),
 });
 
+export const carResponseSchema = z.object({
+  id: z.string(),
+  km: z.number(),
+  price: z.number(),
+  color: z.string(),
+  description: z.string(),
+  main_image: z.string(),
+  isActive: z.boolean(),
+});
+
 export const carReturnSchema = z.object({
   id: z.string(),
   km: z.number(),
@@ -22,10 +32,11 @@ export const carReturnSchema = z.object({
   color: z.string(),
   description: z.string(),
   main_image: z.string(),
+  isActive: z.boolean(),
   model_car: modelCarSchema,
   images: listImagesSchema,
   comments: returnCommentsArraySchema,
-  user: z.string(),
+  user: userSchemaResponse,
 });
 
 export const carUpdateSchema = z.object({
@@ -34,6 +45,7 @@ export const carUpdateSchema = z.object({
   color: z.string().nullable(),
   description: z.string().nullable(),
   image: z.any().nullable(),
+  isActive: z.boolean().nullable(),
   model_car: modelCarReturnSchema.nullable(),
 });
 

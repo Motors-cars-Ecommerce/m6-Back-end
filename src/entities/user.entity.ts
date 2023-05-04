@@ -52,7 +52,6 @@ class User {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @BeforeUpdate()
   @BeforeInsert()
   hashPassword() {
     this.password = hashSync(this.password, 10);

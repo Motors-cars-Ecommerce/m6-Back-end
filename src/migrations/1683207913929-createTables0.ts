@@ -1,13 +1,13 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class CreatedTables1683050948014 implements MigrationInterface {
-    name = 'CreatedTables1683050948014'
+export class CreateTables01683207913929 implements MigrationInterface {
+    name = 'CreateTables01683207913929'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "models_cars" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "branded" character varying(127) NOT NULL, "model" character varying(127) NOT NULL, "year" character varying(4) NOT NULL, "fuel" character varying NOT NULL, CONSTRAINT "PK_56a87918172991185412386cd0f" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "images" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "image_url" character varying NOT NULL, "carId" uuid, CONSTRAINT "PK_1fe148074c6a1a91b63cb9ee3c9" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "comments" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "text" character varying NOT NULL, "carId" uuid, "userId" uuid, CONSTRAINT "PK_8bf68bc960f2b69e818bdb90dcb" PRIMARY KEY ("id"))`);
-        await queryRunner.query(`CREATE TABLE "cars" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "km" integer NOT NULL, "price" integer NOT NULL, "color" character varying NOT NULL, "description" character varying NOT NULL, "main_image" character varying NOT NULL, "userId" uuid, "modelCarId" uuid, CONSTRAINT "PK_fc218aa84e79b477d55322271b6" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "cars" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "km" integer NOT NULL, "price" integer NOT NULL, "color" character varying NOT NULL, "description" character varying NOT NULL, "main_image" character varying NOT NULL, "isActive" boolean NOT NULL DEFAULT true, "userId" uuid, "modelCarId" uuid, CONSTRAINT "PK_fc218aa84e79b477d55322271b6" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "name" character varying(150) NOT NULL, "email" character varying(127) NOT NULL, "cpf" character varying NOT NULL, "password" character varying(120) NOT NULL, "phone" character varying(14) NOT NULL, "description" character varying NOT NULL, "birthday" TIMESTAMP NOT NULL, "seller" boolean NOT NULL DEFAULT false, "isActive" boolean NOT NULL DEFAULT true, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"), CONSTRAINT "UQ_230b925048540454c8b4c481e1c" UNIQUE ("cpf"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "addresses" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "cep" character varying(8) NOT NULL, "street" character varying NOT NULL, "city" character varying NOT NULL, "number" character varying NOT NULL, "complement" character varying NOT NULL, "state" character varying NOT NULL, "userId" uuid, CONSTRAINT "PK_745d8f43d3af10ab8247465e450" PRIMARY KEY ("id"))`);
         await queryRunner.query(`ALTER TABLE "images" ADD CONSTRAINT "FK_c966d343d95687961368797192e" FOREIGN KEY ("carId") REFERENCES "cars"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);

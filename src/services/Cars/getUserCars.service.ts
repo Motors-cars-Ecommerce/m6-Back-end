@@ -1,6 +1,7 @@
 import Car from "../../entities/car.entity";
 import AppDataSource from "../../data-source";
 import User from "../../entities/user.entity";
+import { carReturnSchema, listCarSchema } from "../../schema/car.schemas";
 
 export const getUserCarsService = async (id: any) => {
   const carRepository = AppDataSource.getRepository(Car);
@@ -18,7 +19,9 @@ export const getUserCarsService = async (id: any) => {
     },
   });
 
-  return cars;
+  const returnCars = listCarSchema.parse(cars);
+
+  return returnCars;
 };
 
 export default getUserCarsService;

@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import User from "../../entities/user.entity";
-import { userReturnSchema } from "../../schema/user.schema";
+import { userReturnSchema, userSchemaResponse } from "../../schema/user.schema";
 
 export const retriveUserService = async (userId: string) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -15,5 +15,7 @@ export const retriveUserService = async (userId: string) => {
     },
   });
 
-  return user;
+  const returnuser = userSchemaResponse.parse(user);
+
+  return returnuser;
 };

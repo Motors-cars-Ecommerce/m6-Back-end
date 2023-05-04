@@ -7,7 +7,7 @@ import Comment from "./entities/comment.entity";
 import Image from "./entities/image.entity";
 import ModelsCar from "./entities/modelCar.entity";
 import User from "./entities/user.entity";
-import { CreatedTables1683050948014 } from "./migrations/1683050948014-createdTables";
+import { CreateTables01683207913929 } from "./migrations/1683207913929-createTables0";
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -27,12 +27,8 @@ const AppDataSource = new DataSource(
         logging: true,
         synchronize: false,
         entities: [Address, Car, Comment, Image, ModelsCar, User],
-        migrations: [
-          CreatedTables1683050948014
-        ],
+        migrations: [CreateTables01683207913929],
       }
 );
-
-// falta preencher as entities e migrations
 
 export default AppDataSource;

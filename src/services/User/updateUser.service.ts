@@ -2,6 +2,7 @@ import AppDataSource from "../../data-source";
 import User from "../../entities/user.entity";
 import { AppError } from "../../errors/AppError";
 import { IUserUpdate } from "../../interfaces/user.Interface";
+import { userSchemaResponse } from "../../schema/user.schema";
 
 export const updateUserService = async (dataBody: IUserUpdate, id: string) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -17,5 +18,7 @@ export const updateUserService = async (dataBody: IUserUpdate, id: string) => {
 
   await userRepository.save(user);
 
-  return user;
+  const returnuser = userSchemaResponse.parse(user);
+
+  return returnuser;
 };

@@ -3,11 +3,11 @@ import Address from "../../entities/address.entity";
 import User from "../../entities/user.entity";
 import { AppError } from "../../errors/AppError";
 import { IUser, IUserRequest } from "../../interfaces/user.Interface";
+import { userSchemaResponse } from "../../schema/user.schema";
 
 export const createdUserService = async (
   dataBody: IUserRequest
 ): Promise<IUser> => {
-  console.log(dataBody.addresses);
   const { addresses, ...res } = dataBody;
 
   const userRepository = AppDataSource.getRepository(User);
@@ -27,5 +27,7 @@ export const createdUserService = async (
 
   await addressRepository.save(createAddres);
 
-  return user;
+  const returnUser = userSchemaResponse.parse(user);
+
+  return returnUser;
 };

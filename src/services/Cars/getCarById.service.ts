@@ -17,7 +17,9 @@ export const getCarByIdService = async (id: string) => {
     },
   });
 
-  return car;
+  const returnCar = carReturnSchema.parse(car);
+
+  return returnCar;
 };
 
 export default getCarByIdService;

@@ -31,6 +31,9 @@ class Car {
   @Column()
   main_image: string;
 
+  @Column({ default: true })
+  isActive: boolean;
+
   @ManyToOne(() => User, (user) => user.cars, { onDelete: "CASCADE" })
   user: User;
 
@@ -41,7 +44,6 @@ class Car {
   images: Image[];
 
   @OneToMany(() => Comment, (comment) => comment.car, { onDelete: "CASCADE" })
-  //@JoinColumn()
   comments: Comment[];
 }
 

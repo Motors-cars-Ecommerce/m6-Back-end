@@ -1,21 +1,27 @@
-import {z} from 'zod'
-
+import { z } from "zod";
+import { carResponseSchema } from "./car.schemas";
+import { userSchemaResponse } from "./user.schema";
 
 const commentSchema = z.object({
-    text: z.string().nonempty(),
-    car: z.any(),
-    user: z.any()
-})
+  text: z.string().nonempty(),
+  car: z.any(),
+  user: z.any(),
+});
 
-const commentUpdateSchema = commentSchema.partial()
+const commentUpdateSchema = commentSchema.partial();
 
 const returnCommentSchema = z.object({
-    id: z.string(),
-    text: z.string(),
-    car: z.any(),
-    user: z.any()
-})
+  id: z.string(),
+  text: z.string(),
+  car: carResponseSchema,
+  user: userSchemaResponse,
+});
 
-const returnCommentsArraySchema =   returnCommentSchema.array()
+const returnCommentsArraySchema = returnCommentSchema.array();
 
-export {commentSchema, commentUpdateSchema, returnCommentSchema, returnCommentsArraySchema}
+export {
+  commentSchema,
+  commentUpdateSchema,
+  returnCommentSchema,
+  returnCommentsArraySchema,
+};

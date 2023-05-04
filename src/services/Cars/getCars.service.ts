@@ -1,10 +1,14 @@
 import AppDataSource from "../../data-source";
 import Car from "../../entities/car.entity";
+import { listCarSchema } from "../../schema/car.schemas";
 
 export const getCarsService = async () => {
   const carsRepo = AppDataSource.getRepository(Car);
 
   const cars = await carsRepo.find({
+    where: {
+      isActive: true,
+    },
     relations: {
       model_car: true,
       user: true,
@@ -13,5 +17,7 @@ export const getCarsService = async () => {
     },
   });
 
-  return cars;
+  const returnCars = listCarSchema.parse(cars);
+
+  return returnCars;
 };

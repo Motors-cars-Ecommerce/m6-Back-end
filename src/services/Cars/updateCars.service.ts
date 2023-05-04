@@ -1,6 +1,7 @@
 import Car from "../../entities/car.entity";
 import { ICarUpdated } from "../../interfaces/cars.interface";
 import AppDataSource from "../../data-source";
+import { carResponseSchema } from "../../schema/car.schemas";
 
 export const updateCarService = async (
   id: string,
@@ -18,7 +19,9 @@ export const updateCarService = async (
 
   await carRepository.save(car);
 
-  return car;
+  const responseCar = carResponseSchema.parse(car);
+
+  return responseCar;
 };
 
 export default updateCarService;
