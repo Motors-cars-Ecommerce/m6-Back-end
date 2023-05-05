@@ -9,5 +9,7 @@ export const deleteCarByIdService = async (id: string) => {
     id,
   });
 
-  await modelRepository.remove(modelCarExists);
+  if (modelCarExists) {
+    await modelRepository.remove(modelCarExists);
+  }
 };

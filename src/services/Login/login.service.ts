@@ -12,6 +12,10 @@ export const loginService = async (data: IUserLogin) => {
     email: data.email,
   });
 
+  if (!userExist) {
+    throw new AppError("Email or password invalid", 403);
+  }
+
   const passwordMatch = await compare(data.password, userExist.password);
 
   if (!passwordMatch) {
@@ -23,7 +27,7 @@ export const loginService = async (data: IUserLogin) => {
       isActive: userExist.isActive,
       id: userExist.id,
     },
-    process.env.SECRET_KEY,
+    process.env.SECRET_KEY as string,
     {
       subject: String(userExist.id),
       expiresIn: "24h",
