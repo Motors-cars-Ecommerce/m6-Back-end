@@ -46,8 +46,8 @@ class User {
   @Column({ default: true })
   isActive: boolean;
 
-  @Column({nullable:true})
-  reset_token?: string | null
+  @Column({ nullable: true })
+  reset_token: string;
 
   @CreateDateColumn()
   createdAt: Date;
