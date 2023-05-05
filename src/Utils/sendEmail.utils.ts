@@ -55,7 +55,7 @@ class EmailService {
           button: {
             color: "#DC4D2F",
             text: "Reset your password",
-            link: `${protocol}://${host}/user/resetPassword/${resetToken}`,
+            link: `http://localhost:5173/user/resetPassword/${resetToken}`,
           },
         },
         outro:
