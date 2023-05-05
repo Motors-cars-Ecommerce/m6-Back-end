@@ -17,10 +17,13 @@ const createdCarService = async (dataBody: ICar) => {
     ...model_car,
   });
 
-  const createCar: Car = carRepository.create({
+  const createCar = carRepository.create({
     ...res,
-    model_car: model,
+    model_car: {
+      ...model,
+    },
   });
+
   await carRepository.save(createCar);
   const car = await carRepository.findOne({
     where: {
@@ -35,7 +38,9 @@ const createdCarService = async (dataBody: ICar) => {
   images?.map(async (image: any) => {
     const newImage = imageRepository.create({
       image_url: image.image_url,
-      car: car,
+      car: {
+        ...car,
+      },
     });
     await imageRepository.save(newImage);
   });

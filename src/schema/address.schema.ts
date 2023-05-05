@@ -1,11 +1,12 @@
 import { z } from "zod";
 
 const addressSchema = z.object({
-  cep: z.string(),
-  street: z.string(),
-  city: z.string(),
-  number: z.string(),
-  complement: z.string(),
+  cep: z.string().nonempty(),
+  street: z.string().nonempty(),
+  city: z.string().nonempty(),
+  number: z.string().nonempty(),
+  state: z.string().nonempty(),
+  complement: z.string().nonempty(),
   user: z.any(),
 });
 

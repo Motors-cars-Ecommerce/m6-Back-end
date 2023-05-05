@@ -1,13 +1,16 @@
 import AppDataSource from "../../data-source";
 import Address from "../../entities/address.entity";
 import User from "../../entities/user.entity";
+import { AppError } from "../../errors/AppError";
 import {
   IAddress,
   IAddressResponse,
+  IAddressUpdated,
 } from "../../interfaces/address.interfaces";
+import { responseAddressSchema } from "../../schema/address.schema";
 
 const updatedAddressService = async (
-  data: IAddress,
+  data: any,
   userId: string
 ): Promise<IAddressResponse> => {
   const addressRepo = AppDataSource.getRepository(Address);
@@ -22,11 +25,17 @@ const updatedAddressService = async (
     },
   });
 
-  const address = await addressRepo.findOne({
-    where: {
-      id: user.address[0].id,
-    },
+  if (!user) {
+    throw new AppError("user not found", 409);
+  }
+
+  const address = await addressRepo.findOneBy({
+    id: user.address[0].id,
   });
+
+  if (!address) {
+    throw new AppError("Adress not found", 409);
+  }
 
   const updatedAddress = addressRepo.create({
     ...address,
@@ -35,7 +44,9 @@ const updatedAddressService = async (
 
   await addressRepo.save(updatedAddress);
 
-  return updatedAddress;
+  const returnAddress = responseAddressSchema.parse(updatedAddress);
+
+  return returnAddress as IAddressResponse;
 };
 
 export default updatedAddressService;

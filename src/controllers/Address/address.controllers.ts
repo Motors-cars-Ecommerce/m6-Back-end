@@ -24,7 +24,7 @@ const listAddressController = async (req: Request, res: Response) => {
 
 const updatedAddressController = async (req: Request, res: Response) => {
   const userId: string = req.user.id;
-  const data: IAddressUpdated = req.body;
+  const data = req.body;
 
   const updatedAddress = await updatedAddressService(data, userId);
 

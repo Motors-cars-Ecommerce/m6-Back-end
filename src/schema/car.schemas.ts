@@ -11,6 +11,7 @@ export const carSchema = z.object({
   description: z.string(),
   main_image: z.string(),
   model_car: z.any(),
+  isActive: z.boolean(),
   user: z.any(),
   images: z.any(),
 });

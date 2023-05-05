@@ -7,7 +7,9 @@ export const deleteImageService = async (id: string) => {
     id: id,
   });
 
-  await imageRepository.remove(image);
+  if (image) {
+    await imageRepository.remove(image);
+  }
 
   return {};
 };
