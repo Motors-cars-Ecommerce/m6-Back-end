@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class UserResetToken1683292018216 implements MigrationInterface {
-    name = 'UserResetToken1683292018216'
+export class RenderMigration1683318981276 implements MigrationInterface {
+    name = 'RenderMigration1683318981276'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "models_cars" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "branded" character varying(127) NOT NULL, "model" character varying(127) NOT NULL, "year" character varying(4) NOT NULL, "fuel" character varying NOT NULL, CONSTRAINT "PK_56a87918172991185412386cd0f" PRIMARY KEY ("id"))`);
