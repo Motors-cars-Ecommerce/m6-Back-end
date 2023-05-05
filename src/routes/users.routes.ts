@@ -3,6 +3,8 @@ import {
   createdUserController,
   deleteUserController,
   getUsersController,
+  resetPasswordController,
+  sendResetEmailPasswordController,
   updateUserController,
   userRetriveController,
 } from "../controllers/User/usersControllers";
@@ -23,5 +25,9 @@ userRouter.get("/:id/cars", getUserCarsController);
 userRouter.patch("", ensureAuthMiddleware, updateUserController);
 
 userRouter.delete("", ensureAuthMiddleware, deleteUserController);
+
+userRouter.post("/resetPassword", sendResetEmailPasswordController);
+
+userRouter.patch("/resetPassword/:token", resetPasswordController);
 
 export default userRouter;

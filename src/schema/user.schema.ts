@@ -12,7 +12,14 @@ const userSchema = z.object({
   seller: z.boolean(),
   isActive: z.boolean(),
   addresses: z.any(),
+  reset_token: z.string().optional(),
 });
+
+const sendEmailRequest = z.object({
+  to: z.string(),
+  subject: z.string(),
+  text: z.string()
+})
 
 const userSchemaResponse = z.object({
   id: z.string(),
@@ -58,4 +65,5 @@ export {
   listUsersSchema,
   loginSchema,
   userSchemaResponse,
+  sendEmailRequest
 };
