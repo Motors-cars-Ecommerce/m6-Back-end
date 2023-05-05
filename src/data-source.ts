@@ -1,6 +1,13 @@
 import "dotenv/config";
 import "reflect-metadata";
 import { DataSource, DataSourceOptions } from "typeorm";
+import Address from "./entities/address.entity";
+import Car from "./entities/car.entity";
+import Comment from "./entities/comment.entity";
+import Image from "./entities/image.entity";
+import ModelsCar from "./entities/modelCar.entity";
+import User from "./entities/user.entity";
+import { CreateTables1683245465557 } from "./migrations/1683245465557-createTables";
 import path from "path";
 
 const dataSourceConfig = (): DataSourceOptions => {
