@@ -12,7 +12,7 @@ const userSchema = z.object({
   seller: z.boolean(),
   isActive: z.boolean(),
   addresses: z.any(),
-  reset_token: z.string().optional(),
+  reset_token: z.string().nullable().optional(),
 });
 
 const sendEmailRequest = z.object({
@@ -49,6 +49,7 @@ const userReturnSchema = z.object({
   seller: z.boolean(),
   address: z.any(),
   cars: z.any(),
+  reset_token: z.string().nullable().optional(),
 });
 
 const listUsersSchema = userReturnSchema.array();

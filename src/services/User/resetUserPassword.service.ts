@@ -4,6 +4,7 @@ import { AppError } from "../../errors/AppError";
 import { randomUUID } from "node:crypto";
 import { emailService } from "../../Utils/sendEmail.utils";
 import { hashSync } from "bcryptjs";
+import { number, string } from "zod";
 
 class UsersService {
   async sendResetEmailPassword(email: string, protocol: string, host: string) {

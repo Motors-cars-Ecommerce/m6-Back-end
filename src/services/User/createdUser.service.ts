@@ -8,7 +8,7 @@ import { userSchemaResponse } from "../../schema/user.schema";
 export const createdUserService = async (
   dataBody: IUserRequest
 ): Promise<IUser> => {
-  const { addresses, ...res } = dataBody;
+  const { addresses, reset_token, ...res } = dataBody;
 
   const userRepository = AppDataSource.getRepository(User);
   const addressRepository = AppDataSource.getRepository(Address);

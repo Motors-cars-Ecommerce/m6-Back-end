@@ -11,9 +11,11 @@ export const updateUserService = async (dataBody: IUserUpdate, id: string) => {
     id,
   });
 
+  const { reset_token, ...res } = dataBody
+
   const user = userRepository.create({
     ...userExists,
-    ...dataBody,
+    ...res,
   });
 
   await userRepository.save(user);

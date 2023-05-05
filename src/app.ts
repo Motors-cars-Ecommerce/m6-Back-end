@@ -5,11 +5,8 @@ import "reflect-metadata";
 import cors from "cors";
 import handleError from "./errors/handleError";
 import userRouter from "./routes/users.routes";
-
 import addressRoutes from "./routes/address.routes";
-
 import commentsRouter from "./routes/comments.routes";
-
 import loginRouter from "./routes/login.routes";
 import carsRouter from "./routes/cars.routes";
 import modelRouter from "./routes/modelsCars.routes";
