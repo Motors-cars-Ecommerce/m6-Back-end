@@ -47,7 +47,7 @@ class UsersService {
     }
 
     user.password = hashSync(password, 10);
-    user.reset_token = null;
+    user.reset_token = "";
 
     await userRepository.save(user);
   }
